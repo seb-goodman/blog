@@ -1,0 +1,141 @@
+---
+// Contact form component that works with static form services
+// Supports Netlify Forms, Formspree, and Web3Forms
+---
+
+<form 
+  id="contact-form"
+  class="space-y-6"
+  method="POST"
+  action="https://formspree.io/f/mzzvdvgd"
+>
+  <!-- Honeypot field for spam protection -->
+  <input type="hidden" name="_gotcha" style="display:none !important" />
+  
+  <div class="space-y-4">
+    <div>
+      <label for="name" class="block text-sm font-medium text-black dark:text-white mb-2">
+        Name *
+      </label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        class="w-full px-4 py-3 border border-black/15 dark:border-white/20 rounded-lg bg-white dark:bg-black/20 text-black dark:text-white placeholder-black/50 dark:placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-black/20 dark:focus:ring-white/20 transition-colors"
+        placeholder="Your name"
+      />
+    </div>
+    
+    <div>
+      <label for="email" class="block text-sm font-medium text-black dark:text-white mb-2">
+        Email *
+      </label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        class="w-full px-4 py-3 border border-black/15 dark:border-white/20 rounded-lg bg-white dark:bg-black/20 text-black dark:text-white placeholder-black/50 dark:placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-black/20 dark:focus:ring-white/20 transition-colors"
+        placeholder="your.email@example.com"
+      />
+    </div>
+    
+    <div>
+      <label for="subject" class="block text-sm font-medium text-black dark:text-white mb-2">
+        Subject
+      </label>
+      <input
+        type="text"
+        id="subject"
+        name="subject"
+        class="w-full px-4 py-3 border border-black/15 dark:border-white/20 rounded-lg bg-white dark:bg-black/20 text-black dark:text-white placeholder-black/50 dark:placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-black/20 dark:focus:ring-white/20 transition-colors"
+        placeholder="What's this about?"
+      />
+    </div>
+    
+    <div>
+      <label for="message" class="block text-sm font-medium text-black dark:text-white mb-2">
+        Message *
+      </label>
+      <textarea
+        id="message"
+        name="message"
+        required
+        rows="6"
+        class="w-full px-4 py-3 border border-black/15 dark:border-white/20 rounded-lg bg-white dark:bg-black/20 text-black dark:text-white placeholder-black/50 dark:placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-black/20 dark:focus:ring-white/20 transition-colors resize-y"
+        placeholder="Your message..."
+      ></textarea>
+    </div>
+  </div>
+  
+  <button
+    type="submit"
+    class="w-full bg-black dark:bg-white text-white dark:text-black py-3 px-6 rounded-lg font-medium hover:bg-black/80 dark:hover:bg-white/80 focus:outline-none focus:ring-2 focus:ring-black/20 dark:focus:ring-white/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+    id="submit-btn"
+  >
+    Send Message
+  </button>
+  
+  <!-- Success/Error messages -->
+  <div id="form-status" class="hidden p-4 rounded-lg"></div>
+</form>
+
+<script>
+  // Enhanced form handling for better UX
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const statusDiv = document.getElementById('form-status') as HTMLDivElement;
+  
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Disable submit button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    statusDiv.classList.add('hidden');
+    
+    try {
+      const formData = new FormData(form);
+      
+      // Submit to Formspree
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        // Success
+        statusDiv.className = 'p-4 rounded-lg bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800';
+        statusDiv.textContent = 'Thanks for your message! I\'ll get back to you soon.';
+        form.reset();
+      } else {
+        const data = await response.json();
+        if (data.errors) {
+          throw new Error(data.errors.map((error: any) => error.message).join(', '));
+        } else {
+          throw new Error('Network response was not ok');
+        }
+      }
+    } catch (error) {
+      // Error
+      statusDiv.className = 'p-4 rounded-lg bg-red-100 dark:bg-red-900/20 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800';
+      statusDiv.textContent = 'Sorry, there was an error sending your message. Please try again or email me directly.';
+    } finally {
+      // Re-enable submit button
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+      statusDiv.classList.remove('hidden');
+      
+      // Auto-hide success message after 5 seconds
+      if (statusDiv.textContent?.includes('Thanks')) {
+        setTimeout(() => {
+          statusDiv.classList.add('hidden');
+        }, 5000);
+      }
+    }
+  });
+</script> 

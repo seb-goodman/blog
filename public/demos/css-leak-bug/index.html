@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS Leak Demo</title>
+    <style>
+      body {
+        background-color: white;
+        color: black;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS Leak Test</h1>
+    <p>If everything works correctly, the background should stay white.</p>
+
+    <my-component></my-component>
+
+    <script type="module" src="./leaky.js"></script>
+  </body>
+</html>

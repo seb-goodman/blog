@@ -1,0 +1,56 @@
+---
+export interface Props {
+  repo: string;
+  repoId: string;
+  category: string;
+  categoryId: string;
+  mapping?: 'pathname' | 'url' | 'title' | 'og:title';
+  term?: string;
+  theme?: 'light' | 'dark' | 'preferred_color_scheme';
+  lang?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  repo,
+  repoId,
+  category,
+  categoryId,
+  mapping = 'pathname',
+  term,
+  theme = 'preferred_color_scheme',
+  lang = 'en',
+  loading = 'lazy'
+} = Astro.props;
+---
+
+<div class="giscus-container my-8">
+  <script 
+    src="https://giscus.app/client.js"
+    data-repo={repo}
+    data-repo-id={repoId}
+    data-category={category}
+    data-category-id={categoryId}
+    data-mapping={mapping}
+    data-term={term}
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme={theme}
+    data-lang={lang}
+    data-loading={loading}
+    crossorigin="anonymous"
+    async>
+  </script>
+</div>
+
+<style>
+  .giscus-container {
+    max-width: 100%;
+  }
+  
+  .giscus-container iframe {
+    width: 100% !important;
+  }
+</style>
