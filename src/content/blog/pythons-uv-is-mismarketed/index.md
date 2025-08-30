@@ -17,9 +17,9 @@ My pet theory for uv's somewhat leisurely rise to Python stardom is its one sent
 
 > An extremely fast Python package and project manager, written in Rust.
 
-On the face of it, this seems perfectly descriptive, and I can see why Astral went with this line; it's in keeping with their other tools like [Ruff](https://github.com/astral-sh/ruff).
+On the face of it, this seems perfectly descriptive, and I can see why Astral went with this line. It's in keeping with their other tools like [Ruff](https://github.com/astral-sh/ruff), and at this point, it's basically obligatory for any self-respecting Rust project to describe itself as 'blazingly fast' (or some variant of).
 
-But it's probably not optimal copywriting. What is it failing to communicate?
+That said - and yes this is a bit of a nitpick - it's probably not optimal copywriting. What is it failing to communicate?
 
 Yes, uv _is_ fast. _Really_ fast. When your CI/CD pipeline drops from 5 minutes to 30 seconds and when your Docker builds shrink, speed like this actually matters. And this does have a compounding effect when it's used day-to-day. But even then, speed isn't quite the main appeal of uv for me, and I suspect it's not the appeal of uv for most Python developers who use it, nor 'would-be' uv converts.
 
