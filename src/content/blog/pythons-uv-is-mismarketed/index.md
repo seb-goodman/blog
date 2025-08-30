@@ -25,10 +25,11 @@ Yes, uv _is_ fast. _Really_ fast. When your CI/CD pipeline drops from 5 minutes 
 
 The rest of the description also falls a little flat. Yes, uv is also a "package and project manager", and it's also written in Rust. But what does this add? While I'm sure this matters to the Rust community, Python developers aren't getting hung up on what language their developer tools are built with. They just want a good tool.
 
-
 ## The Real Problem uv Solves
 
-The fundamental problem uv solves - and where it should focus its messaging - is tool sprawl. Python workflows used to be a Frankenstein's monster of different tools, each with their own configuration files and their own ways of breaking. uv isn't just a package manager — it's a _complete_ Python toolchain replacement.
+The fundamental problem uv solves - and where it should focus its messaging - is tool sprawl. Python workflows used to be a Frankenstein's monster of different tools, each with their own configuration files and their own ways of breaking.
+
+uv has killed this monster. It's a _complete_ Python toolchain replacement.
 
 - **Package management**: Replaces pip, pip-tools, pipenv, poetry
 - **Virtual environments**: Replaces venv, virtualenv, conda
