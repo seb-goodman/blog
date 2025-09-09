@@ -7,7 +7,7 @@ draft: false
 
 I'm a big fan of the Python package manager [uv](https://github.com/astral-sh/uv). A _big_ fan. I'll shudder using the word, but it has unironically been a 'game-changer' for me.
 
-My appreciation for uv is probably why I've been so confused lately by how few Python developers have even come across it. I see this at work, but it's also on display in conversations over social media, where people still seem convinced that Python tooling sucks.
+My appreciation for uv is probably why I've been so confused lately by how few Python developers have even come across it. I see this at work, but I also see this a lot on Twitter, where people still seem convinced that Python tooling sucks.
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">I hate python<br>I hate python3<br>I hate pip3<br>I hate pip<br>I hate venv<br><br>Why can&#39;t they just come up with a normal version and package manager for god&#39;s sake. This is ridiculous.</p>&mdash; Async (@0xAsync) <a href="https://twitter.com/0xAsync/status/1766962418171670661?ref_src=twsrc%5Etfw">March 10, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -29,7 +29,7 @@ The rest of the description also falls a little flat. Yes, uv is also a "package
 
 The fundamental problem uv solves - and where it should focus its messaging - is tool sprawl. Python workflows used to be a Frankenstein's monster of different tools, each with their own configuration files and their own ways of breaking.
 
-uv has killed this monster. It's a _complete_ Python toolchain replacement.
+uv has killed this monster. It's become a _complete_ Python toolchain replacement.
 
 - **Package management**: Replaces pip, pip-tools, pipenv, poetry
 - **Virtual environments**: Replaces venv, virtualenv, conda
