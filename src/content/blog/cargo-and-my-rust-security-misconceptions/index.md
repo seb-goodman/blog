@@ -1,7 +1,7 @@
 ---
 title: "Cargo, and My Rust Security Misconceptions"
-description: ""
-date: ""
+description: "Test"
+date: "Jun 17 2025"
 draft: true
 ---
 
